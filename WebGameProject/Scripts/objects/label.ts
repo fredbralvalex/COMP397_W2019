@@ -21,5 +21,11 @@ module objects {//module = namespace
             this.y = y;
         }
         //Methods / function
+
+        updatePosition():void {
+            //why does not work
+            this.regX = this.getMeasuredWidth() * 0.5;
+            this.regY = this.getMeasuredHeight() * 0.5;
+        }
     }
 }

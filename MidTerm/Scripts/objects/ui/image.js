@@ -13,31 +13,23 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Label = /** @class */ (function (_super) {
-        __extends(Label, _super);
-        //variables
-        //constructors
-        function Label(labelString, fontSize, fontFamily, fontColor, x, y, isCentered) {
+    var Image = /** @class */ (function (_super) {
+        __extends(Image, _super);
+        function Image(assetManager, imageString, x, y, isCentered) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
-            if (isCentered === void 0) { isCentered = false; }
-            var _this = _super.call(this, labelString, fontSize + " " + fontFamily, fontColor) || this;
+            if (isCentered === void 0) { isCentered = true; }
+            var _this = _super.call(this, assetManager.getResult(imageString)) || this;
             if (isCentered) {
-                _this.regX = _this.getMeasuredWidth() * 0.5;
-                _this.regY = _this.getMeasuredHeight() * 0.5;
+                _this.regX = _this.getBounds().width * 0.5;
+                _this.regY = _this.getBounds().height * 0.5;
             }
             _this.x = x;
             _this.y = y;
             return _this;
         }
-        //Methods / function
-        Label.prototype.updatePosition = function () {
-            //why does not work
-            this.regX = this.getMeasuredWidth() * 0.5;
-            this.regY = this.getMeasuredHeight() * 0.5;
-        };
-        return Label;
-    }(createjs.Text));
-    objects.Label = Label;
+        return Image;
+    }(createjs.Bitmap));
+    objects.Image = Image;
 })(objects || (objects = {}));
-//# sourceMappingURL=label.js.map
+//# sourceMappingURL=image.js.map

@@ -13,31 +13,31 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Label = /** @class */ (function (_super) {
-        __extends(Label, _super);
-        //variables
-        //constructors
-        function Label(labelString, fontSize, fontFamily, fontColor, x, y, isCentered) {
+    var Button = /** @class */ (function (_super) {
+        __extends(Button, _super);
+        function Button(assetManager, imageString, x, y, isCentered) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (isCentered === void 0) { isCentered = false; }
-            var _this = _super.call(this, labelString, fontSize + " " + fontFamily, fontColor) || this;
+            var _this = _super.call(this, assetManager.getResult(imageString)) || this;
             if (isCentered) {
-                _this.regX = _this.getMeasuredWidth() * 0.5;
-                _this.regY = _this.getMeasuredHeight() * 0.5;
+                _this.regX = _this.getBounds().width * 0.5;
+                _this.regY = _this.getBounds().height * 0.5;
             }
             _this.x = x;
             _this.y = y;
+            _this.on("mouseover", _this.mouseOver);
+            _this.on("mouseout", _this.mouseOut);
             return _this;
         }
-        //Methods / function
-        Label.prototype.updatePosition = function () {
-            //why does not work
-            this.regX = this.getMeasuredWidth() * 0.5;
-            this.regY = this.getMeasuredHeight() * 0.5;
+        Button.prototype.mouseOver = function () {
+            this.alpha = 0.7;
         };
-        return Label;
-    }(createjs.Text));
-    objects.Label = Label;
+        Button.prototype.mouseOut = function () {
+            this.alpha = 1.0;
+        };
+        return Button;
+    }(createjs.Bitmap));
+    objects.Button = Button;
 })(objects || (objects = {}));
-//# sourceMappingURL=label.js.map
+//# sourceMappingURL=button.js.map
