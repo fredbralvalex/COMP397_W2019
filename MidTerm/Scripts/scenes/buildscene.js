@@ -35,7 +35,7 @@ var scenes;
             this.txtType.alpha = 1;
             this.printMapButton = new objects.Button(this.assetManager, "smallButton", objects.Game.width * 0.4, objects.Game.height * 0.97, true);
             this.printMapButton.scaleX = 0.75;
-            this.txtPrint = new objects.Label("Print Map", "20px", "Cambay", "#960000", this.printMapButton.x, this.printMapButton.y + 2, true);
+            this.txtPrint = new objects.Label("Console log", "20px", "Cambay", "#960000", this.printMapButton.x, this.printMapButton.y + 2, true);
             this.txtPrint.alpha = 1;
             this.playButton = new objects.Button(this.assetManager, "smallButton", objects.Game.width * 0.6, objects.Game.height * 0.97, true);
             this.playButton.scaleX = 0.75;

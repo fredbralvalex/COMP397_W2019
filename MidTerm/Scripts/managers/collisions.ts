@@ -25,31 +25,6 @@ module managers {
             }
         }
 
-        public static CheckAABB(obj1: objects.GameObject, obj2: objects.GameObject):boolean {
-            let aabb1 = obj1.boxCollider.aabb;
-            let aabb2 = obj2.boxCollider.aabb;
-
-            let md = aabb1.minkowskiDifference(aabb2);
-
-
-            if (md.CheckCollided())
-            {
-                if(!obj2.isColliding) {                    
-                    obj2.isColliding = true;
-                   var penetrationVector:math.Vec2 = md.closestPointOnBoundsToPoint(math.Vec2.zero);
-                   obj1.OnColliderEnter(penetrationVector, obj2);
-                }
-                return true;
-            }
-
-            if (obj2.isColliding) {
-                obj1.OnColliderExit(penetrationVector, obj2);
-            }
-            //boxA.center += penetrationVector;
-            obj2.isColliding = false;
-            return false;
-        }
-
         public static CheckAABBCollision(aabb1: managers.AABB, aabb2: managers.AABB):managers.AABB {
             return aabb1.minkowskiDifference(aabb2);
         }

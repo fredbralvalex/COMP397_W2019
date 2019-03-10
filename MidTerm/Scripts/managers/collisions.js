@@ -23,25 +23,6 @@ var managers;
                 return false;
             }
         };
-        Collision.CheckAABB = function (obj1, obj2) {
-            var aabb1 = obj1.boxCollider.aabb;
-            var aabb2 = obj2.boxCollider.aabb;
-            var md = aabb1.minkowskiDifference(aabb2);
-            if (md.CheckCollided()) {
-                if (!obj2.isColliding) {
-                    obj2.isColliding = true;
-                    var penetrationVector = md.closestPointOnBoundsToPoint(math.Vec2.zero);
-                    obj1.OnColliderEnter(penetrationVector, obj2);
-                }
-                return true;
-            }
-            if (obj2.isColliding) {
-                obj1.OnColliderExit(penetrationVector, obj2);
-            }
-            //boxA.center += penetrationVector;
-            obj2.isColliding = false;
-            return false;
-        };
         Collision.CheckAABBCollision = function (aabb1, aabb2) {
             return aabb1.minkowskiDifference(aabb2);
         };

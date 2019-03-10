@@ -23,29 +23,7 @@ module managers{
            var topLeft:math.Vec2 = math.Vec2.Difference(other.max, this.min);
            var fullSize:math.Vec2 = math.Vec2.Sum(this.size, other.size);
            return new AABB(math.Vec2.Sum(topLeft, math.Vec2.Divide(fullSize, 2)), math.Vec2.Divide(fullSize, 2));
-       }
-
-       public closestPointOnBoundsToPoint(point:math.Vec2):math.Vec2
-        {
-            var minDist:number = Math.abs(point.x - this.min.x);
-            var boundsPoint:math.Vec2 = new math.Vec2(this.min.x, point.y);
-            if (Math.abs(this.max.x - point.x) < minDist)
-            {
-                minDist = Math.abs(this.max.x - point.x);
-                boundsPoint = new math.Vec2(this.max.x, point.y);
-            }
-            if (Math.abs(this.max.y - point.y) < minDist)
-            {
-                minDist = Math.abs(this.max.y - point.y);
-                boundsPoint = new math.Vec2(point.x, this.max.y);
-            }
-            if (Math.abs(this.min.y - point.y) < minDist)
-            {
-                minDist = Math.abs(this.min.y - point.y);
-                boundsPoint = new math.Vec2(point.x, this.min.y);
-            }
-            return boundsPoint;
-        }
+       }      
 
         //work only if this object is the result of checking aabb collision using minkowskiDifference
         public CheckCollided():boolean {

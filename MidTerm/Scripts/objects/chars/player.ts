@@ -97,7 +97,7 @@ module objects{
 
     public CheckVerticalMovement(Check: (x:number, y:number) => managers.AABB, isUp: boolean, speed:number): boolean {
       let md:managers.AABB = Check(this.x, this.y + (isUp ? 0 - speed: speed));
-      return !md.isCollided;// || md.closestPointOnBoundsToPoint(math.Vec2.zero).y == 0;
+      return !md.isCollided;
     }
 
     public CheckBounds(): void {

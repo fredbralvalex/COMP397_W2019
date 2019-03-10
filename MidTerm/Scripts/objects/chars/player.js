@@ -89,7 +89,7 @@ var objects;
         };
         Player.prototype.CheckVerticalMovement = function (Check, isUp, speed) {
             var md = Check(this.x, this.y + (isUp ? 0 - speed : speed));
-            return !md.isCollided; // || md.closestPointOnBoundsToPoint(math.Vec2.zero).y == 0;
+            return !md.isCollided;
         };
         Player.prototype.CheckBounds = function () {
         };
